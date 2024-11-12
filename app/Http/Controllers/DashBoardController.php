@@ -11,4 +11,15 @@ class DashBoardController extends Controller
     {
         return view('dashboard/dashboard');
     }
+
+    public function showPage($page)
+    {
+        // Vérifier si la vue existe
+        if (view()->exists("dashboard.{$page}")) {
+            return view("dashboard.{$page}");
+        }
+
+        // Si la vue n'existe pas, rediriger vers la page d'accueil
+        return redirect('/');
+    }
 }

@@ -12,12 +12,15 @@ class HomeController extends Controller
         return view('pages/home');
     }
 
-    public function show($page)
+    public function showPage($page)
     {
-        if (View::exists("pages.{$page}")) {
+        // Vérifier si la vue existe
+        if (view()->exists("pages.{$page}")) {
             return view("pages.{$page}");
         }
-        // Retourner une page 404 si la vue n'existe pas
-        abort(404);
+
+        // Si la vue n'existe pas, rediriger vers la page d'accueil
+        return redirect('/');
     }
+
 }
