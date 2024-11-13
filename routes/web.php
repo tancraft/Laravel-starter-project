@@ -1,30 +1,35 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DashBoardController;
-
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DashboardController;
 
 /**
- * routes publiques
+ * Routes publiques avec contrôleur unique
  */
-
-// Route::get('/', [HomeController::class, 'index']);
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::middleware('auth','admin')->group(function () {
-    Route::get('/dashboard', [DashBoardController::class, 'index']);
-
-    // Route::get('/dashboard/{page}', function ($page) {
-    //     if (view()->exists("dashboard.{$page}")) {
-    //         return view("dashboard.{$page}");
-    //     }
-    //     return redirect('/');
-    // })->where('page', '.*');
-    Route::get('/dashboard/{page}', [DashboardController::class, 'showPage'])->where('page', '.*');
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/{page}', 'showPage')->where('page', 'about|galeries|tools');
 });
 
-Route::get('/{page}', [HomeController::class, 'showPage'])->where('page', '.*');
+/**
+ * Routes du tableau de bord
+ */
+Route::middleware('auth')->prefix('dashboard')->group(function () {
 
+    // Routes accessibles à tous les utilisateurs authentifiés
+    Route::get('/posts', [DashboardController::class, 'posts']);
+
+    // Routes pour l'admin seulement
+    Route::middleware('admin')->group(function () {
+        Route::get('/admin', [DashboardController::class, 'admin']);
+        Route::get('/users', [DashboardController::class, 'users']);
+    });
+
+    // Routes pour l'éditeur seulement
+    Route::middleware('editor')->group(function () {
+        Route::get('/editor', [DashboardController::class, 'editor']);
+    });
+});
 
 

@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-
-class IsAdmin
+class IsEditor
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role_id == 1) {
+        if (Auth::check() && Auth::user()->role_id == 2) {
             return $next($request);
         }
         return redirect('/');

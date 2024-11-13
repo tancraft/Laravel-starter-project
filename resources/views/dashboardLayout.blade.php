@@ -27,20 +27,16 @@
                     </div>
                     <nav class="main-nav">
                         <ul class="flex">
-                            <li><a href="/">home</a></li>
-                            <li><a href="/about">about</a></li>
-                            <li><a href="/galeries">galeries</a></li>
-                            <li><a href="/tools">tools</a></li>
-                
+                            <li><a href="/">website</a></li>               
                             @if (Route::has('login'))
                                 @auth
                                     <!-- Affiche le lien Dashboard seulement pour les administrateurs -->
                                     @if (auth()->user()->role_id == 1)
                                         <li>
-                                            <a href="/dashboard" class="">Dashboard</a>
+                                            <a href="/dashboard/users" class="">users</a>
                                         </li>
                                     @endif
-                
+                                    <li><a href="/dashboard/posts" class="">articles</a></li>                
                                     <li>
                                         <form action="/logout" method="POST">
                                             @csrf
@@ -49,16 +45,6 @@
                                             </button>
                                         </form>
                                     </li>
-                                @else
-                                    <li>
-                                        <a href="{{ route('login') }}" class="">Log in</a>
-                                    </li>
-                
-                                    @if (Route::has('register'))
-                                        <li>
-                                            <a href="{{ route('register') }}" class="">Register</a>
-                                        </li>
-                                    @endif
                                 @endauth
                             @endif
                         </ul>
