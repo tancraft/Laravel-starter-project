@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Post;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View as ViewFacade;
 
 class BlogController extends Controller
 {
     public function index(): View
     {
-        return view('pages/home');
+        $posts = Post::all();
+        return view('pages.home', compact('posts'));
     }
 
     public function showPage($page): View

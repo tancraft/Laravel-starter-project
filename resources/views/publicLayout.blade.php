@@ -20,63 +20,66 @@
     </head>
     <body class="">
         <div class="">
-            <div class="">
-                <header class="flex">
-                    <div class="">
-                        <h2>header</h2>
-                    </div>
-                    <nav class="main-nav">
-                        <ul class="flex">
-                            <li><a href="/">home</a></li>
-                            <li><a href="/about">about</a></li>
-                            <li><a href="/galeries">galeries</a></li>
-                            <li><a href="/tools">tools</a></li>
-                
-                            @if (Route::has('login'))
-                                @auth
-                                    <!-- Affiche le lien Dashboard seulement pour les administrateurs -->
-                                    @if (auth()->user()->role_id == 1)
-                                        <li>
-                                            <a href="/dashboard/admin" class="">Dashboard</a>
-                                        </li>
-                                    @endif
+            <header class="flex">
+                <div class="title">
+                    <h2>nom du site</h2>
+                </div>
+                <nav class="main-nav">
+                    <ul class="flex">
+                        <li><a href="/">home</a></li>
+                        <li><a href="/about">about</a></li>
+                        <li><a href="/galeries">galeries</a></li>
+                        <li><a href="/tools">tools</a></li>
+                    </ul>
+                </nav>
+                <nav>
+                    <ul>
+            
+            @if (Route::has('login'))
+                @auth
+                        @if (auth()->user()->role_id == 1)
+                                <li>
+                                    <a href="/dashboard/admin" class="">Dashboard</a>
+                                </li>
+                        @endif
 
-                                    @if (auth()->user()->role_id == 2)
-                                        <li>
-                                            <a href="/dashboard/editor" class="">Dashboard</a>
-                                        </li>
-                                    @endif
-                
-                                    <li>
-                                        <form action="/logout" method="POST">
-                                            @csrf
-                                            <button class="" href="{{ route('logout') }}">
-                                                logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a href="{{ route('login') }}" class="">Log in</a>
-                                    </li>
-                
-                                    @if (Route::has('register'))
-                                        <li>
-                                            <a href="{{ route('register') }}" class="">Register</a>
-                                        </li>
-                                    @endif
-                                @endauth
-                            @endif
-                        </ul>
-                    </nav>
-                </header>                
+                        @if (auth()->user()->role_id == 2)
+                            <li>
+                                <a href="/dashboard/editor" class="">Dashboard</a>
+                            </li>
+                        @endif
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button class="" href="{{ route('logout') }}">
+                                        logout
+                                    </button>
+                                </form>
+                            </li>
+            @else
+                <li>
+                    <a href="{{ route('login') }}" class="">Log in</a>
+                </li>
+            
+                    @if (Route::has('register'))
+                        <li>
+                            <a href="{{ route('register') }}" class="">Register</a>
+                        </li>
+                    @endif
 
-                    @yield('content')
+                @endauth
+            @endif
+                    </ul>
+                </nav>
+            </header>
 
-                    <footer class="">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer>
-            </div>
+            @yield('content')
+
+            <footer class="">
+                <p>
+                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                </p>
+            </footer>
         </div>
     </body>
 </html>

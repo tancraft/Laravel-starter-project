@@ -15,7 +15,7 @@ Route::controller(BlogController::class)->group(function () {
 /**
  * Routes du tableau de bord
  */
-Route::middleware('auth')->prefix('dashboard')->group(function () {
+Route::middleware('auth')->prefix('dashboard')->controller(DashboardController::class)->group(function () {
 
     // Routes accessibles à tous les utilisateurs authentifiés
     Route::get('/posts', [DashboardController::class, 'posts']);
@@ -31,5 +31,6 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
         Route::get('/editor', [DashboardController::class, 'editor']);
     });
 });
+
 
 

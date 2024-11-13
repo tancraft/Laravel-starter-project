@@ -46,11 +46,10 @@ ol {
 button {
 	cursor: pointer;
 }
+
 button,
 input {
 	background-color: transparent;
-	outline: none;
-	border: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -69,10 +68,24 @@ input {
     flex-wrap: wrap;
 }
 
-
-.main-nav{
-    width: 100%;
+header {
+	padding: 10px 10px 10px 10px;
+	margin-bottom: 20px;
+	justify-content: space-between;
 }
+section {
+	padding: 30px 10px 10px 30px;
+	margin-bottom: 30px;
+}
+
+footer {
+	padding: 10px 10px 10px 10px;
+}
+
+/**
+	navbar
+**/
+
 
 .main-nav li > a {
     display: block;
