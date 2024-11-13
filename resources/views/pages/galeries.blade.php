@@ -2,10 +2,9 @@
 
 @section('content')
 
-    <main class="mt-6">
-        <div class="">
-            <h1> galeries</h1>
+    <div class="">
 
-        </div>
-    </main>
-    @endsection
+        <h1> galeries</h1>
+        
+    </div>
+@endsection

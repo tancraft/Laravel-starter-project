@@ -1,0 +1,54 @@
+header {
+	padding: 10px 10px 10px 10px;
+	margin-bottom: 20px;
+	justify-content: space-between;
+	background-color: rgb(var(--darker-color));
+	color: rgb(var(--lighter-color));
+}
+
+main{
+    width: 80%;
+}
+
+section {
+	padding: 30px 10px 10px 30px;
+	margin-bottom: 30px;
+}
+
+footer {
+	padding: 10px 10px 10px 10px;
+	background-color: rgb(var(--primary-color));
+	color: rgb(var(--lighter-color));
+}
+
+/**
+	navbar
+**/
+
+.main-nav li > a {
+    display: block;
+    padding: 10px;
+}
+
+.nav li a{
+	color: rgb(var(--lighter-color));
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.posts h2 {
+    margin-bottom: 20px;
+}
+
+.card-content{
+    padding: 10px;
+    width: calc(100% - 250px);
+
+}
+
+.thumbnail {
+    max-width: 250px;
+}

@@ -6,17 +6,27 @@
     @csrf
     
     <div>
-        <label for="email">email: </label>
-        <input type="email" name="email">
+        <div>
+    
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+            @error('email')
 
-    </div>   
-    <button type="submit">send</button>
+                <span class="invalid-feedback" role="alert">
+
+                    <strong>{{ $message }}</strong>
+
+                </span>
+
+            @enderror
+
+        </div>
+
+            <div>
+    
+                <button type="submit" class="btn btn-primary">{{ __('forgot-password') }}</button>
+    
+            </div>
 </form>
 
 @endsection

@@ -2,9 +2,8 @@
 
 @section('content')
 
-    <main class="">
-        <div class="">
-            <h1>espace des articles</h1>
-        </div>
-    </main>
+    <div class="">
+        <h1>espace des articles</h1>
+    </div>
+
 @endsection

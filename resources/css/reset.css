@@ -1,0 +1,52 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: var(--font-size);
+	font-family: var(--font-family);
+	color: rgb(var(--darker-color));
+}
+img,
+picture,
+canvas,
+video,
+svg {
+	display: block;
+	width: 100%;
+	max-height: 100vh;
+}
+a,
+a:visited {
+	text-decoration: none;
+	color: rgb(var(--darker-color));
+}
+ul,
+ol {
+	list-style: inside;
+	list-style-type: none;
+}
+button {
+	cursor: pointer;
+}
+
+button,
+input {
+	background-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

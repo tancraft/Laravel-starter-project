@@ -1,0 +1,31 @@
+header {
+	padding: 10px 10px 10px 10px;
+	margin-bottom: 20px;
+	justify-content: space-between;
+	background-color: rgb(var(--grey-color));
+	color: rgb(var(--darker-color));
+}
+
+section {
+	padding: 30px 10px 10px 30px;
+	margin-bottom: 30px;
+}
+
+footer {
+	padding: 10px 10px 10px 10px;
+	background-color: rgb(var(--primary-color));
+	color: rgb(var(--lighter-color));
+}
+
+/**
+	navbar
+**/
+
+.main-nav li > a {
+    display: block;
+    padding: 10px;
+}
+
+.nav li a{
+	color: rgb(var(--darker-color));
+}

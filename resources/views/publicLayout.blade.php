@@ -12,7 +12,13 @@
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+            @vite([
+                'resources/css/root.css',
+                'resources/css/reset.css',
+                'resources/css/app.css',
+                'resources/css/public.css',
+                'resources/js/app.js'
+            ])
         @else
             <style>
             </style>
@@ -21,10 +27,15 @@
     <body class="">
         <div class="">
             <header class="flex">
+
                 <div class="title">
+
                     <h2>nom du site</h2>
+
                 </div>
-                <nav class="main-nav">
+
+                <nav class="main-nav nav">
+
                     <ul class="flex">
                         <li><a href="/">home</a></li>
                         <li><a href="/about">about</a></li>
@@ -32,21 +43,22 @@
                         <li><a href="/tools">tools</a></li>
                     </ul>
                 </nav>
-                <nav>
+
+                <nav class="nav">
                     <ul>
             
             @if (Route::has('login'))
                 @auth
                         @if (auth()->user()->role_id == 1)
-                                <li>
-                                    <a href="/dashboard/admin" class="">Dashboard</a>
-                                </li>
+
+                                <li><a href="/dashboard/admin" class="">Dashboard</a></li>
+
                         @endif
 
                         @if (auth()->user()->role_id == 2)
-                            <li>
-                                <a href="/dashboard/editor" class="">Dashboard</a>
-                            </li>
+
+                            <li><a href="/dashboard/editor" class="">Dashboard</a></li>
+
                         @endif
                             <li>
                                 <form action="/logout" method="POST">
@@ -57,14 +69,13 @@
                                 </form>
                             </li>
             @else
-                <li>
-                    <a href="{{ route('login') }}" class="">Log in</a>
-                </li>
+
+                <li><a href="{{ route('login') }}" class="">Log in</a></li>
             
                     @if (Route::has('register'))
-                        <li>
-                            <a href="{{ route('register') }}" class="">Register</a>
-                        </li>
+
+                        <li><a href="{{ route('register') }}" class="">Register</a></li>
+
                     @endif
 
                 @endauth
@@ -73,12 +84,14 @@
                 </nav>
             </header>
 
-            @yield('content')
+            <main class="center">
+                @yield('content')
+            </main>
 
             <footer class="">
-                <p>
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                </p>
+
+                <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
+
             </footer>
         </div>
     </body>

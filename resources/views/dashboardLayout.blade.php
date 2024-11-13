@@ -12,7 +12,13 @@
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+            @vite([
+                'resources/css/root.css',
+                'resources/css/reset.css',
+                'resources/css/app.css',
+                'resources/css/dashboard.css',
+                'resources/js/app.js'
+            ])
         @else
             <style>
             </style>
@@ -20,43 +26,68 @@
     </head>
     <body class="">
         <div class="">
-            <div class="">
-                <header class="flex">
-                    <div class="">
-                        <h2>header</h2>
-                    </div>
-                    <nav class="main-nav">
-                        <ul class="flex">
-                            <li><a href="/">website</a></li>               
-                            @if (Route::has('login'))
-                                @auth
-                                    <!-- Affiche le lien Dashboard seulement pour les administrateurs -->
-                                    @if (auth()->user()->role_id == 1)
-                                        <li>
-                                            <a href="/dashboard/users" class="">users</a>
-                                        </li>
-                                    @endif
-                                    <li><a href="/dashboard/posts" class="">articles</a></li>                
-                                    <li>
-                                        <form action="/logout" method="POST">
-                                            @csrf
-                                            <button class="" href="{{ route('logout') }}">
-                                                logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                @endauth
-                            @endif
-                        </ul>
-                    </nav>
-                </header>                
 
-                    @yield('content')
+            <header class="flex">
 
-                    <footer class="">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer>
-            </div>
+                <div class="title">
+
+                    <h2>nom du site</h2>
+
+                </div>
+
+                <nav class="main-nav nav">
+                    <ul class="flex">
+                        @if (auth()->user()->role_id == 1)
+
+                            <li><a href="/dashboard/admin" class="">Dashboard</a></li>
+
+                        @endif
+
+                        @if (auth()->user()->role_id == 2)
+
+                            <li><a href="/dashboard/editor" class="">Dashboard</a></li>
+
+                        @endif
+
+                        <li><a href="/dashboard/posts">articles</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="nav">
+                    <ul>
+            
+                @if (Route::has('login'))
+                    @auth
+                        <li><a href="/" class="">website</a></li>
+
+                        <li>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="" href="{{ route('logout') }}">
+                                    logout
+                                </button>
+                            </form>
+                        </li>
+                @else
+                    <li><a href="{{ route('login') }}" class="">Log in</a></li>
+                
+                        @if (Route::has('register'))
+
+                            <li><a href="{{ route('register') }}" class="">Register</a></li>
+
+                        @endif
+
+                    @endauth
+                @endif
+                    </ul>
+                </nav>
+            </header>
+
+            @yield('content')
+
+            <footer class="">
+                Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+            </footer>
         </div>
     </body>
 </html>
