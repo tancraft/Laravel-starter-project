@@ -1,10 +1,130 @@
+
+/**layout**/
+body {
+	position: relative;
+	background-color: rgb(var(--lighter-color));
+}
+
+/** header **/
 header {
-	padding: 10px 10px 10px 10px;
-	margin-bottom: 20px;
-	justify-content: space-between;
-	background-color: rgb(var(--grey-color));
 	color: rgb(var(--darker-color));
 }
+
+.main-header{
+	justify-content: space-between;
+	padding: 10px 10px 10px 10px;
+	background-color: rgb(var(--grey-color));
+}
+
+/** navbar **/
+
+.main-nav {
+	background-color: rgba(var(--grey-color), 0.5);
+}
+
+.main-nav li > a {
+    display: block;
+    padding: 10px;
+}
+
+.profil li a{
+	color: rgb(var(--darker-color));
+}
+
+/**aside**/
+
+.side-nav {
+	position: fixed;
+	height: 100vh;
+	left: 0;
+	top: 0;
+}
+
+.wrapper {
+	background: rgb(var(--darker-color));
+	height: 100vh;
+	width: 100px;
+}
+
+.branding{
+	background: rgba(var(--darker-color), 0.94);
+}
+
+.branding,
+.nav-bloc {
+	padding: 0.8rem 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	border-bottom: 1px solid rgb(var(--icons-color));
+}
+
+.branding svg,
+.nav-bloc svg {
+	max-height: 2.5rem;
+	fill: rgb(var(--lighter-color));
+	transition: 0.2s ease-in-out;
+}
+
+.branding:hover svg,
+.nav-bloc:hover svg {
+	fill: rgb(var(--primary-color));
+}
+
+.nav-bloc:hover .sub-nav {
+	transform: translateX(100px);
+}
+
+
+
+.sub-nav {
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(var(--darker-color), 0.5);
+	z-index: -1;
+	color: rgb(var(--lighter-color));
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+	border-left: 2px solid var(--icons-color);
+}
+
+.sub-nav h2 {
+	padding: 0 2rem;
+	height: 5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(var(--primary-color));
+	color: rgb(var(--darker-color));
+	text-transform: uppercase;
+	font-weight: 200;
+}
+
+.sub-nav li a {
+	display: block;
+	padding: 1rem;
+	color: rgb(var(--lighter-color));
+}
+
+.sub-nav li:hover {
+	background-color: rgb(var(--icons-color));
+}
+
+/**
+	content
+**/
+.board {
+	position: absolute;
+	right: 0;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+	width: calc(100vw - 100px);
+}
+
 
 section {
 	padding: 30px 10px 10px 30px;
@@ -13,19 +133,7 @@ section {
 
 footer {
 	padding: 10px 10px 10px 10px;
+	width: 100%;
 	background-color: rgb(var(--primary-color));
 	color: rgb(var(--lighter-color));
-}
-
-/**
-	navbar
-**/
-
-.main-nav li > a {
-    display: block;
-    padding: 10px;
-}
-
-.nav li a{
-	color: rgb(var(--darker-color));
 }

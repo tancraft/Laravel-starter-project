@@ -1,8 +1,9 @@
-.flex{
-    display: flex;
-    flex-wrap: wrap;
+.center{
+	width: 80%;
+	margin: 0 auto;
 }
 
-.center{
-	margin: 0 auto;
+.flex {
+	display: flex;
+	flex-wrap: wrap;
 }

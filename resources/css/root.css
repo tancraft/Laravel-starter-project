@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;0,900;1,300&display=swap");
 
 :root {
-	--darker-color: 43, 45, 66;
-	--lighter-color: 237, 242, 244;
-	--primary-color: 217, 4, 41;
-	--grey-color: 141, 153, 174;
+	--darker-color: 18, 24, 24;
+	--lighter-color: 224, 225, 231;
+	--primary-color: 52, 141, 219;
+	--icons-color: 52, 141, 219;
+
 	--font-family: "Poppins", sans-serif;
 	--font-size: 16px;
-	--gap: 1rem;
+
+	--gap: 10px;
 }
