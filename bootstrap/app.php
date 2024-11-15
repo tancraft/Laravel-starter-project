@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\RoleMiddleware;
+use App\Http\Middleware\RedirectIfNotAuthenticated;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\IsAdmin;
-use App\Http\Middleware\IsEditor;
-use App\Http\Middleware\RedirectIfNotAuthenticated;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,9 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
 
         $middleware->alias([
-            'admin' => IsAdmin::class, // Ajoutez le chemin complet pour éviter toute erreur
-            'editor' => IsEditor::class,
             'auth' => RedirectIfNotAuthenticated::class, // Redirige vers la home
+            'role' => RoleMiddleware::class, // Seul middleware requis
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

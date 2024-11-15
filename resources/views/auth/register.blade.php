@@ -95,6 +95,7 @@
 
             </select>
 
+
             @error('role_id')
 
                 <span class="invalid-feedback" role="alert">
@@ -106,7 +107,7 @@
             @enderror
 
         </div>
-
+                <input type="hidden" id="remember_token" name="remember_token">
         <div>
 
             <button type="submit">{{ __('Register') }}</button>
