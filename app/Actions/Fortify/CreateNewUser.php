@@ -36,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Hash::make($input['password']),
+            'password' => Hash::make($input['password']),// Hash du password
             'role_id' => $input['role_id'],
             'remember_token' => Str::random(60), // Génération du remember_token
         ]);

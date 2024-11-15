@@ -48,7 +48,6 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
 
             $roles = Role::all();
-            // dd($roles);
             return view('auth.register', compact('roles'));
         });
 

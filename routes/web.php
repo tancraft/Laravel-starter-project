@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\DashboardController;
 
 /**
  * Routes du tableau de bord avec middleware pour vérifier l'authentification et les rôles
