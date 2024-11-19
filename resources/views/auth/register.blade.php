@@ -85,16 +85,13 @@
 
         <div>
 
-            <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
-
+            <select name="roles[]" id="roles" multiple class="form-control @error('roles') is-invalid @enderror">
                 @foreach($roles as $role)
-
-                    <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
-
+                    <option value="{{ $role->id }}" {{ in_array($role->id, old('roles', [])) ? 'selected' : '' }}>
+                        {{ $role->name }}
+                    </option>
                 @endforeach
-
             </select>
-
 
             @error('role_id')
 

@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'tancraft',
             'email' => 'tancraft@tancraft.com',
             'password' => bcrypt('password'),
-            'role_id' => 1,
             'remember_token'=> Str::random(60)
         ]);
 
@@ -35,7 +34,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'alfred',
             'email' => 'alfred@alfred.com',
             'password' => bcrypt('password'),
-            'role_id' => 2,
             'remember_token'=> Str::random(60)
         ]);
     }

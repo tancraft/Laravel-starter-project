@@ -27,17 +27,13 @@
                     <div class="main-header flex">
                         <nav class="main-nav nav">
                             <ul class="flex">
-                                @if (auth()->user()->role_id == 1)
-        
-                                    <li><a href="/dashboard/admin" class="">Dashboard</a></li>
-        
-                                @endif
-        
-                                @if (auth()->user()->role_id == 2)
-        
-                                    <li><a href="/dashboard/editor" class="">Dashboard</a></li>
-        
-                                @endif
+                                @if (auth()->user()->roles->contains('name', 'admin'))
+                                <li><a href="/dashboard/admin" class="">Dashboard Admin</a></li>
+                            @endif
+                            
+                            @if (auth()->user()->roles->contains('name', 'editor'))
+                                <li><a href="/dashboard/editor" class="">Dashboard Editor</a></li>
+                            @endif
         
                                 <li><a href="/dashboard/posts">articles</a></li>
                             </ul>

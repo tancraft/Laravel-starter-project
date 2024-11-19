@@ -28,17 +28,23 @@ class CreateNewUser implements CreatesNewUsers
                 'email',
                 'max:255',
                 Rule::unique(User::class),
-                'role_id' => ['required', 'exists:roles,id'],
             ],
+            'roles' => ['required', 'array'], // Validation pour plusieurs rôles
+            'roles.*' => ['exists:roles,id'], // Vérifie que chaque rôle existe
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Hash::make($input['password']),// Hash du password
-            'role_id' => $input['role_id'],
-            'remember_token' => Str::random(60), // Génération du remember_token
+            'password' => Hash::make($input['password']),
+            'remember_token' => Str::random(60),
         ]);
+
+        // Associer les rôles avec la table pivot
+        $user->roles()->sync($input['roles']);
+
+        return $user;
     }
 }
+

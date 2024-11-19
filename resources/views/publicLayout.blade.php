@@ -47,39 +47,38 @@
                 <nav class="nav">
                     <ul>
             
-            @if (Route::has('login'))
-                @auth
-                        @if (auth()->user()->role_id == 1)
-
-                                <li><a href="/dashboard/admin" class="">Dashboard</a></li>
-
-                        @endif
-
-                        @if (auth()->user()->role_id == 2)
-
-                            <li><a href="/dashboard/editor" class="">Dashboard</a></li>
-
-                        @endif
+                        @if (Route::has('login'))
+                        @auth
+                            <!-- Vérifier si l'utilisateur a le rôle admin -->
+                            @if (auth()->user()->roles->contains('name', 'admin'))
+                                <li><a href="/dashboard/admin" class="">Dashboard Admin</a></li>
+                            @endif
+                    
+                            <!-- Vérifier si l'utilisateur a le rôle editor -->
+                            @if (auth()->user()->roles->contains('name', 'editor'))
+                                <li><a href="/dashboard/editor" class="">Dashboard Editor</a></li>
+                            @endif
+                    
+                            <!-- Lien de déconnexion -->
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
-                                    <button class="" href="{{ route('logout') }}">
-                                        logout
+                                    <button class="" type="submit">
+                                        Logout
                                     </button>
                                 </form>
                             </li>
-            @else
-
-                <li><a href="{{ route('login') }}" class="">Log in</a></li>
-            
-                    @if (Route::has('register'))
-
-                        <li><a href="{{ route('register') }}" class="">Register</a></li>
-
+                        @else
+                            <!-- Lien de connexion -->
+                            <li><a href="{{ route('login') }}" class="">Log in</a></li>
+                    
+                            <!-- Lien d'enregistrement si la route existe -->
+                            @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}" class="">Register</a></li>
+                            @endif
+                        @endauth
                     @endif
-
-                @endauth
-            @endif
+                    
                     </ul>
                 </nav>
             </header>
