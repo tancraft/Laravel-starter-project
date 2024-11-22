@@ -37,7 +37,7 @@
                 <nav class="main-nav nav">
 
                     <ul class="flex">
-                        <li><a href="/">home</a></li>
+                        <li><a href="{{ route('home') }}">home</a></li>
                         <li><a href="/about">about</a></li>
                         <li><a href="/galeries">galeries</a></li>
                         <li><a href="/tools">tools</a></li>
@@ -50,18 +50,10 @@
                         @if (Route::has('login'))
                         @auth
                             <!-- Vérifier si l'utilisateur a le rôle admin -->
-                            @if (auth()->user()->roles->contains('name', 'admin'))
-                                <li><a href="/dashboard/admin" class="">Dashboard Admin</a></li>
-                            @endif
-                    
-                            <!-- Vérifier si l'utilisateur a le rôle editor -->
-                            @if (auth()->user()->roles->contains('name', 'editor'))
-                                <li><a href="/dashboard/editor" class="">Dashboard Editor</a></li>
-                            @endif
-                    
+                            <li><a href="{{ route('dashboard') }}" class="">Dashboard</a></li>                 
                             <!-- Lien de déconnexion -->
                             <li>
-                                <form action="/logout" method="POST">
+                                <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button class="" type="submit">
                                         Logout

@@ -26,28 +26,32 @@
                 <header>
                     <div class="main-header flex">
                         <nav class="main-nav nav">
+
                             <ul class="flex">
+                                    <li><a href="{{ route('dashboard') }}" class="">Dashboard</a></li>
+
                                 @if (auth()->user()->roles->contains('name', 'admin'))
-                                <li><a href="/dashboard/admin" class="">Dashboard Admin</a></li>
-                            @endif
-                            
-                            @if (auth()->user()->roles->contains('name', 'editor'))
-                                <li><a href="/dashboard/editor" class="">Dashboard Editor</a></li>
-                            @endif
-        
-                                <li><a href="/dashboard/posts">articles</a></li>
+                                    <li><a href="{{ route('users.index') }}" class="">Users</a></li>
+                                @endif
+                                
+                                @if (auth()->user()->roles->contains('name', 'editor'))
+                                    <li><a href="{{ route('posts.index') }}">articles</a></li>
+                                    <li><a href="{{ route('tags.index') }}">tags</a></li>
+                                    <li><a href="{{ route('categories.index') }}">categories</a></li>
+                                @endif    
                             </ul>
+
                         </nav>
                         <nav class="profil">   
                             <ul>
                         @if (Route::has('login'))
                             @auth
-                                <li><a href="/" class="">website</a></li>
+                                <li><a href="{{ route('home') }}" class="">website</a></li>
         
                                 <li>
-                                    <form action="/logout" method="POST">
+                                    <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button class="" href="{{ route('logout') }}">
+                                        <button class="">
                                             logout
                                         </button>
                                     </form>

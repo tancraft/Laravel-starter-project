@@ -1,10 +1,10 @@
-@extends('dashboardLayout')
+@extends('adminLayout')
 
 @section('content')
 
     <div class="">
 
-        <h1> user</h1>
+        <h1> dashboard admin</h1>
         
     </div>
 

@@ -7,26 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View as ViewFacade;
 
-class DashBoardController extends Controller
+class AdminController extends Controller
 {
-    public function admin(): View
+    public function index(): View
     {
-        return view('dashboard/admin');
-    }
-
-    public function editor(): View
-    {
-        return view('dashboard/editor');
-    }
-
-    public function users(): View
-    {
-        return view('dashboard/users');
-    }
-
-    public function posts(): View
-    {
-        return view('dashboard/posts');
+        return view('admin.index');
     }
 
     // public function showDashboard($page)
