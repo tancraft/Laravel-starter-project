@@ -4,7 +4,7 @@
 
 <section class="categories">
 
-    <h2>Tout les utilisateurs</h2>
+    <h2>Toute les catégories</h2>
 
     <div class="post-container">
 
@@ -20,7 +20,7 @@
             </article>
 
         @empty
-            <p>Aucun utilisateur n'est disponible pour le moment. :(</p>
+            <p>Aucune catégorie n'est disponible pour le moment. :(</p>
         @endforelse
 
     </div>

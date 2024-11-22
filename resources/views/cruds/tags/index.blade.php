@@ -4,7 +4,7 @@
 
 <section class="users">
 
-    <h2>Tout les utilisateurs</h2>
+    <h2>Tout les tags</h2>
 
     <div class="post-container">
 

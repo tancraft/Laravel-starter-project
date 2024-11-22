@@ -4,7 +4,7 @@
 
     <div class="">
 
-        <h1> dashboard admin</h1>
+        <h1> dashboard</h1>
         
     </div>
 
